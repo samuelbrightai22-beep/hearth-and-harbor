@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "query": "linen bedding sage green duvet",
+  "count": 2,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/2e9a99bbd09a.jpg",
+      "caption": "",
+      "source": "Black Forest Down Comforters",
+      "original_width": "1280px",
+      "original_height": "853px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ad55ed055758.jpg",
+      "caption": "",
+      "source": "Linen Tales",
+      "original_width": "1500px",
+      "original_height": "1500px"
+    }
+  ]
+}

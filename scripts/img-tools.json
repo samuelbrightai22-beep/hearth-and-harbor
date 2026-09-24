@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "query": "vintage hand tools workshop wrench and hammer",
+  "count": 3,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f46ae54f5b30.jpg",
+      "caption": "",
+      "source": "eBay",
+      "original_width": "1200px",
+      "original_height": "900px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f372ece37dbb.jpg",
+      "caption": "",
+      "source": "YouTube",
+      "original_width": "1280px",
+      "original_height": "720px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/547dd4a54867.jpg",
+      "caption": "",
+      "source": "Etsy",
+      "original_width": "2000px",
+      "original_height": "2000px"
+    }
+  ]
+}

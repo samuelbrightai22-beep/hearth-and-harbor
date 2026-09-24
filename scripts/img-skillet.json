@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "query": "cast iron skillet on wooden table",
+  "count": 3,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ed0a74b07b83.jpg",
+      "caption": "",
+      "source": "Bayou Classic",
+      "original_width": "1946px",
+      "original_height": "1946px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ffab4c310492.webp",
+      "caption": "",
+      "source": "Laurel Mercantile",
+      "original_width": "1080px",
+      "original_height": "1080px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/deed2430f14e.jpg",
+      "caption": "",
+      "source": "Gibson Homewares",
+      "original_width": "3600px",
+      "original_height": "3600px"
+    }
+  ]
+}

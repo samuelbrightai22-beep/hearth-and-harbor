@@ -1,0 +1,194 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-fraunces);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.5rem;
+  /* Hearth & Harbor brand palette */
+  --background: #FAF7F2;          /* warm off-white */
+  --foreground: #1F1F1F;          /* charcoal */
+  --card: #FFFFFF;
+  --card-foreground: #1F1F1F;
+  --popover: #FFFFFF;
+  --popover-foreground: #1F1F1F;
+  --primary: #1A4A4F;             /* deep teal */
+  --primary-foreground: #FAF7F2;
+  --secondary: #EFE9DF;           /* warm cream */
+  --secondary-foreground: #1A4A4F;
+  --muted: #EFE9DF;
+  --muted-foreground: #6B6B6B;    /* slate */
+  --accent: #D97843;              /* warm amber / terracotta */
+  --accent-foreground: #FAF7F2;
+  --destructive: #C0392B;
+  --border: #E5DDD0;
+  --input: #E5DDD0;
+  --ring: #1A4A4F;
+  --chart-1: #1A4A4F;
+  --chart-2: #D97843;
+  --chart-3: #6B8E7F;
+  --chart-4: #C9A66B;
+  --chart-5: #8B4513;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #1F1F1F;
+  --sidebar-primary: #1A4A4F;
+  --sidebar-primary-foreground: #FAF7F2;
+  --sidebar-accent: #EFE9DF;
+  --sidebar-accent-foreground: #1A4A4F;
+  --sidebar-border: #E5DDD0;
+  --sidebar-ring: #1A4A4F;
+}
+
+.dark {
+  --background: #14201F;
+  --foreground: #FAF7F2;
+  --card: #1A2928;
+  --card-foreground: #FAF7F2;
+  --popover: #1A2928;
+  --popover-foreground: #FAF7F2;
+  --primary: #D97843;
+  --primary-foreground: #14201F;
+  --secondary: #243635;
+  --secondary-foreground: #FAF7F2;
+  --muted: #243635;
+  --muted-foreground: #B8B0A5;
+  --accent: #1A4A4F;
+  --accent-foreground: #FAF7F2;
+  --destructive: #E74C3C;
+  --border: #2D3F3E;
+  --input: #2D3F3E;
+  --ring: #D97843;
+  --chart-1: #D97843;
+  --chart-2: #1A4A4F;
+  --chart-3: #6B8E7F;
+  --chart-4: #C9A66B;
+  --chart-5: #C0392B;
+  --sidebar: #1A2928;
+  --sidebar-foreground: #FAF7F2;
+  --sidebar-primary: #D97843;
+  --sidebar-primary-foreground: #14201F;
+  --sidebar-accent: #243635;
+  --sidebar-accent-foreground: #FAF7F2;
+  --sidebar-border: #2D3F3E;
+  --sidebar-ring: #D97843;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "cv11";
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .font-serif-display {
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-feature-settings: "ss01";
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .container-brand {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .container-wide {
+    @apply mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-8;
+  }
+  .product-card-shadow {
+    box-shadow: 0 1px 2px rgba(26, 74, 79, 0.04), 0 8px 24px -12px rgba(26, 74, 79, 0.12);
+  }
+  .product-card-shadow-hover {
+    box-shadow: 0 4px 8px rgba(26, 74, 79, 0.08), 0 24px 48px -16px rgba(26, 74, 79, 0.2);
+  }
+}
+
+/* Custom scrollbar */
+.scroll-area-brand::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scroll-area-brand::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+.scroll-area-brand::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+.scroll-area-brand::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Marquee animation for brands strip */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Hero fade animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}

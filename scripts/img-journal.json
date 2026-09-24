@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "query": "open journal notebook with pen on table",
+  "count": 2,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/697ab68e4e65.jpeg",
+      "caption": "",
+      "source": "Pexels",
+      "original_width": "1125px",
+      "original_height": "750px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ca55b294c32f.jpg",
+      "caption": "",
+      "source": "Elvis and The Philosopher - Substack",
+      "original_width": "3024px",
+      "original_height": "4032px"
+    }
+  ]
+}

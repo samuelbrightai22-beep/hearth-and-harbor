@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "query": "pour over coffee ceramic dripper",
+  "count": 3,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/2869b8bc24d8.png",
+      "caption": "",
+      "source": "Twin Valley Coffee",
+      "original_width": "853px",
+      "original_height": "1280px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/7689433f41d9.jpg",
+      "caption": "",
+      "source": "Campover",
+      "original_width": "3000px",
+      "original_height": "2007px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/347d409ede9b.jpg",
+      "caption": "",
+      "source": "Eight Ounce Coffee",
+      "original_width": "1065px",
+      "original_height": "1420px"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "Yes, there is a toast notification visible on this page.\n\n**Content:** The toast displays \"Added to cart\" as the heading, with the text \"Field No.10 Cast Iron Skillet — $95\" underneath.\n\n**Position:** It is located in the bottom-right area of the screen, overlapping the \"Our Story\" section text.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1790283232,
+  "id": "2026092504534556832c933c114a39",
+  "model": "glm-5v-turbo",
+  "object": "chat.completion",
+  "request_id": "2026092504534556832c933c114a39",
+  "usage": {
+    "completion_tokens": 70,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1443,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1513
+  }
+}

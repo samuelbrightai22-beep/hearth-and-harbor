@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "*   Five article cards in the \"Field notes & guides\" section are displaying blank beige placeholders instead of images.\n*   The affected articles are: \"The Field Guide to Cast Iron Care,\" \"Linen vs. Cotton,\" \"How to Sharpen a Kitchen Knife,\" \"Designing a Warm-Lit Room,\" and \"The Spring Pantry Reset.\"\n*   Only the \"Choosing Your First Mechanical Watch\" article has its image loaded correctly.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1790282957,
+  "id": "2026092504491378053aca5cee433d",
+  "model": "glm-5v-turbo",
+  "object": "chat.completion",
+  "request_id": "2026092504491378053aca5cee433d",
+  "usage": {
+    "completion_tokens": 91,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 4285,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 4376
+  }
+}
