@@ -9,17 +9,11 @@ import {
   RotateCcw,
   ShieldCheck,
   Leaf,
-  Hammer,
-  Clock,
-  MapPin,
-  Mail,
-  Phone,
   Star,
   Quote,
+  MapPin,
 } from "lucide-react";
 
-import { SiteHeader } from "@/components/site/site-header";
-import { SiteFooter } from "@/components/site/site-footer";
 import { HeroCarousel } from "@/components/site/hero-carousel";
 import { ProductCard } from "@/components/site/product-card";
 import {
@@ -29,35 +23,25 @@ import {
   bestSellingProducts,
   blogPosts,
   brands,
-  aboutImage,
 } from "@/lib/site-data";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { useToast } from "@/hooks/use-toast";
 
 export default function Home() {
   return (
-    <div id="top" className="flex min-h-screen flex-col bg-background">
-      <SiteHeader />
-      <main className="flex-1">
-        <HeroCarousel />
-        <TrustBar />
-        <CategoriesSection />
-        <FeaturedProducts />
-        <AboutSection />
-        <TrendingProducts />
-        <BestSellers />
-        <BrandsStrip />
-        <JournalSection />
-        <TestimonialSection />
-        <ShippingReturnsSection />
-        <FaqSection />
-        <ContactSection />
-      </main>
-      <SiteFooter />
-    </div>
+    <>
+      <HeroCarousel />
+      <TrustBar />
+      <CategoriesSection />
+      <FeaturedProducts />
+      <AboutTeaser />
+      <TrendingProducts />
+      <BestSellers />
+      <BrandsStrip />
+      <JournalTeaser />
+      <TestimonialSection />
+      <ShippingTeaser />
+      <StoreVisitCTA />
+    </>
   );
 }
 
@@ -101,15 +85,18 @@ function CategoriesSection() {
           eyebrow="Browse"
           title="Shop by category"
           description="Six rooms of considered goods. Each one curated by an editor who actually uses what they sell."
+          action={
+            <Button asChild variant="outline" className="rounded-full">
+              <Link href="/shop">View all products <ArrowRight className="h-4 w-4" /></Link>
+            </Button>
+          }
         />
         <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {categories.map((cat, i) => (
+          {categories.map((cat) => (
             <Link
               key={cat.slug}
-              id={`cat-${cat.slug}`}
-              href="#shop"
+              href={`/shop/${cat.slug}`}
               className="group relative overflow-hidden rounded-2xl bg-muted"
-              style={{ scrollMarginTop: "120px" }}
             >
               <div className="relative aspect-[16/11] w-full">
                 <Image
@@ -155,12 +142,12 @@ function FeaturedProducts() {
           description="The pieces our buyers reach for first this season — chosen for materials, maker, and how they hold up over years."
           action={
             <Button asChild variant="outline" className="rounded-full">
-              <Link href="#shop">View all products <ArrowRight className="h-4 w-4" /></Link>
+              <Link href="/shop">View all products <ArrowRight className="h-4 w-4" /></Link>
             </Button>
           }
         />
         <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4 xl:gap-6">
-          {featuredProducts.slice(0, 4).map((p, i) => (
+          {featuredProducts.map((p, i) => (
             <ProductCard key={p.id} product={p} index={i} />
           ))}
         </div>
@@ -170,16 +157,16 @@ function FeaturedProducts() {
 }
 
 /* ----------------------------------------------------------- */
-/* About / Brand story                                         */
+/* About teaser — links to /about                              */
 /* ----------------------------------------------------------- */
-function AboutSection() {
+function AboutTeaser() {
   return (
-    <section id="about" className="py-14 lg:py-24" style={{ scrollMarginTop: "100px" }}>
+    <section className="py-14 lg:py-24">
       <div className="container-wide grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div className="relative order-2 lg:order-1">
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
             <Image
-              src={aboutImage}
+              src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80"
               alt="Inside the Hearth & Harbor Portland workshop"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -200,33 +187,11 @@ function AboutSection() {
             Our story
           </div>
           <h2 className="font-serif-display text-3xl font-semibold leading-[1.1] text-foreground sm:text-4xl lg:text-5xl text-balance">
-            We started Hearth & Harbor because the things we wanted
-            to live with weren&apos;t easy to find.
+            We started Hearth & Harbor because the things we wanted to live with weren&apos;t easy to find.
           </h2>
-          <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-foreground/80">
-            <p>
-              Most of what fills our shelves comes from makers we&apos;ve met
-              in person — a fifth-generation cast iron foundry in Tennessee,
-              a linen mill in Lithuania that&apos;s been open since 1932,
-              a one-person ceramics studio outside Asheville. We choose them
-              not because their work photographs well, but because it ages well.
-            </p>
-            <p>
-              That bias — for things that get better with use — is the only
-              filter we apply. A cast iron skillet that costs more than the
-              department store version, but is still in your kitchen in 2050.
-              A linen sheet that softens over a hundred washes instead of
-              pilling after ten. A knife that gets sharper with proper care,
-              not duller.
-            </p>
-            <p>
-              We ship from Portland, Maine, answer our own email, and stand
-              behind every piece with a real return policy and a lifetime
-              guarantee on tools and cast iron. If something doesn&apos;t
-              hold up, we want to hear about it.
-            </p>
-          </div>
-
+          <p className="mt-6 max-w-lg text-[15px] leading-relaxed text-foreground/80">
+            Most of what fills our shelves comes from makers we&apos;ve met in person — a fifth-generation cast iron foundry in Tennessee, a linen mill in Lithuania that&apos;s been open since 1932, a one-person ceramics studio outside Asheville. We choose them not because their work photographs well, but because it ages well.
+          </p>
           <div className="mt-8 grid grid-cols-3 gap-6 border-t border-border pt-8">
             {[
               { stat: "180+", label: "Independent makers" },
@@ -241,13 +206,12 @@ function AboutSection() {
               </div>
             ))}
           </div>
-
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild className="gap-2 rounded-full">
-              <Link href="#shop">Shop the collection <ArrowRight className="h-4 w-4" /></Link>
+              <Link href="/about">Read our full story <ArrowRight className="h-4 w-4" /></Link>
             </Button>
             <Button asChild variant="outline" className="rounded-full">
-              <Link href="#contact">Visit our Portland store</Link>
+              <Link href="/contact">Visit our Portland store</Link>
             </Button>
           </div>
         </div>
@@ -269,12 +233,12 @@ function TrendingProducts() {
           description="What's been quietly leaving our shelves this month — restocked, reordered, and reviewed."
           action={
             <Button asChild variant="outline" className="rounded-full">
-              <Link href="#shop">See all trending <ArrowRight className="h-4 w-4" /></Link>
+              <Link href="/shop">See all trending <ArrowRight className="h-4 w-4" /></Link>
             </Button>
           }
         />
         <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4 xl:gap-6">
-          {trendingProducts.slice(0, 4).map((p, i) => (
+          {trendingProducts.map((p, i) => (
             <ProductCard key={p.id} product={p} index={i} />
           ))}
         </div>
@@ -296,19 +260,14 @@ function BestSellers() {
           description="The pieces our customers come back for — rated 4.7 stars or higher, with at least 80 reviews each."
           action={
             <Button asChild variant="outline" className="rounded-full">
-              <Link href="#shop">Browse bestsellers <ArrowRight className="h-4 w-4" /></Link>
+              <Link href="/shop">Browse bestsellers <ArrowRight className="h-4 w-4" /></Link>
             </Button>
           }
         />
         <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4 xl:gap-6">
-          {bestSellingProducts.slice(0, 4).map((p, i) => (
+          {bestSellingProducts.map((p, i) => (
             <ProductCard key={p.id} product={p} index={i} />
           ))}
-        </div>
-        <div className="mt-8 flex justify-center">
-          <Button asChild size="lg" variant="default" className="gap-2 rounded-full">
-            <Link href="#shop">Load more products</Link>
-          </Button>
         </div>
       </div>
     </section>
@@ -346,11 +305,11 @@ function BrandsStrip() {
 }
 
 /* ----------------------------------------------------------- */
-/* Journal / Blog                                              */
+/* Journal teaser                                              */
 /* ----------------------------------------------------------- */
-function JournalSection() {
+function JournalTeaser() {
   return (
-    <section id="journal" className="py-14 lg:py-20" style={{ scrollMarginTop: "100px" }}>
+    <section className="py-14 lg:py-20">
       <div className="container-wide">
         <SectionHeading
           eyebrow="From the journal"
@@ -358,17 +317,17 @@ function JournalSection() {
           description="Practical, opinionated writing on owning, fixing, and living with the things you buy. New posts every Tuesday."
           action={
             <Button asChild variant="outline" className="rounded-full">
-              <Link href="#journal">Read the journal <ArrowRight className="h-4 w-4" /></Link>
+              <Link href="/journal">Read the journal <ArrowRight className="h-4 w-4" /></Link>
             </Button>
           }
         />
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {blogPosts.map((post) => (
+          {blogPosts.slice(0, 3).map((post) => (
             <article
               key={post.id}
               className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card product-card-shadow transition-all hover:-translate-y-1 hover:product-card-shadow-hover"
             >
-              <Link href="#journal" className="relative aspect-[16/10] overflow-hidden bg-muted">
+              <Link href={`/journal/${post.slug}`} className="relative aspect-[16/10] overflow-hidden bg-muted">
                 <Image
                   src={post.image}
                   alt={post.title}
@@ -387,7 +346,7 @@ function JournalSection() {
                   <span>{post.readTime}</span>
                 </div>
                 <h3 className="mt-2 font-serif-display text-xl font-semibold leading-snug text-foreground">
-                  <Link href="#journal" className="hover:text-primary transition-colors">
+                  <Link href={`/journal/${post.slug}`} className="hover:text-primary transition-colors">
                     {post.title}
                   </Link>
                 </h3>
@@ -396,17 +355,14 @@ function JournalSection() {
                 </p>
                 <div className="mt-4 flex items-center gap-3 border-t border-border pt-4">
                   <div className="grid h-9 w-9 place-items-center rounded-full bg-primary text-[12px] font-semibold text-primary-foreground">
-                    {post.author
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
+                    {post.author.split(" ").map((n) => n[0]).join("")}
                   </div>
                   <div>
                     <div className="text-[12px] font-semibold text-foreground">{post.author}</div>
                     <div className="text-[11px] text-muted-foreground">Editor</div>
                   </div>
                   <Link
-                    href="#journal"
+                    href={`/journal/${post.slug}`}
                     className="ml-auto inline-flex items-center gap-1 text-[12px] font-semibold text-primary hover:text-accent transition-colors"
                   >
                     Read
@@ -432,9 +388,7 @@ function TestimonialSection() {
         <div className="mx-auto max-w-3xl text-center">
           <Quote className="mx-auto h-8 w-8 text-accent" aria-hidden="true" />
           <p className="mt-6 font-serif-display text-2xl font-medium leading-relaxed sm:text-3xl lg:text-4xl text-balance">
-            &ldquo;I bought a cast iron skillet from Hearth &amp; Harbor five years
-            ago. It&apos;s the only pan I still reach for. Their buyers actually
-            know what they&apos;re doing.&rdquo;
+            &ldquo;I bought a cast iron skillet from Hearth & Harbor five years ago. It&apos;s the only pan I still reach for. Their buyers actually know what they&apos;re doing.&rdquo;
           </p>
           <div className="mt-8 flex items-center justify-center gap-1">
             {Array.from({ length: 5 }).map((_, i) => (
@@ -451,58 +405,43 @@ function TestimonialSection() {
 }
 
 /* ----------------------------------------------------------- */
-/* Shipping & Returns                                          */
+/* Shipping teaser                                             */
 /* ----------------------------------------------------------- */
-function ShippingReturnsSection() {
-  const policies = [
-    {
-      icon: Truck,
-      title: "Shipping",
-      body: "Orders ship within one business day from Portland, Maine. Free standard shipping on orders over $75 within the lower 48 states — typically arriving in 2–5 business days. Expedited shipping is available at checkout, and we ship internationally to over 40 countries with duties calculated up front.",
-    },
-    {
-      icon: RotateCcw,
-      title: "Returns & exchanges",
-      body: "If something isn't right, you have 60 days to return it — no restocking fee, no questions on unused items in original packaging. Cast iron and tools carry a lifetime guarantee against manufacturing defects. Start a return from your account page or email returns@hearthandharbor.com.",
-    },
-    {
-      icon: ShieldCheck,
-      title: "Guarantees & warranty",
-      body: "Every forged steel tool, cast iron piece, and mechanical watch we sell carries a lifetime guarantee against manufacturing defects. If a piece fails under normal use, we'll repair, replace, or refund it — at our discretion, in your favor.",
-    },
-    {
-      icon: Hammer,
-      title: "Repairs & care",
-      body: "Cast iron reseasoning, knife sharpening, and watch servicing are available through our Portland workshop. Drop off in person or mail it in — we'll quote the work before we start, and we never replace parts without checking with you first.",
-    },
-  ];
+function ShippingTeaser() {
   return (
-    <section id="shipping" className="py-14 lg:py-20" style={{ scrollMarginTop: "100px" }}>
+    <section className="py-14 lg:py-20">
       <div className="container-wide">
-        <SectionHeading
-          eyebrow="Customer service"
-          title="Shipping, returns & guarantees"
-          description="Plain-language policies — no fine print. If something is wrong with your order, we'll make it right."
-        />
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          {policies.map((p) => (
-            <div
-              key={p.title}
-              className="flex gap-5 rounded-2xl border border-border bg-card p-6 lg:p-7"
-            >
-              <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary/10 text-primary">
-                <p.icon className="h-5 w-5" />
-              </div>
-              <div>
-                <h3 className="font-serif-display text-xl font-semibold text-foreground">
-                  {p.title}
-                </h3>
-                <p className="mt-2 text-[14px] leading-relaxed text-muted-foreground">
-                  {p.body}
-                </p>
-              </div>
+        <div className="grid gap-6 rounded-2xl border border-border bg-card p-8 lg:grid-cols-4 lg:gap-8 lg:p-10">
+          <div className="lg:col-span-1">
+            <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+              Plain-language policies
             </div>
-          ))}
+            <h2 className="font-serif-display text-2xl font-semibold leading-tight text-foreground sm:text-3xl">
+              Shipping, returns & guarantees
+            </h2>
+            <p className="mt-2 text-[14px] text-muted-foreground">
+              No fine print. If something is wrong with your order, we&apos;ll make it right.
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-3 lg:col-span-3">
+            {[
+              { icon: Truck, title: "Free shipping over $75", note: "Ships in 1 business day from Portland, ME" },
+              { icon: RotateCcw, title: "60-day easy returns", note: "No restocking fee, no questions on unused items" },
+              { icon: ShieldCheck, title: "Lifetime tool guarantee", note: "On forged steel, cast iron, and watches" },
+            ].map((b) => (
+              <div key={b.title} className="flex flex-col gap-2">
+                <b.icon className="h-6 w-6 text-primary" />
+                <div className="font-serif-display text-base font-semibold text-foreground">{b.title}</div>
+                <div className="text-[13px] leading-relaxed text-muted-foreground">{b.note}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="mt-6 flex justify-center">
+          <Button asChild variant="outline" className="gap-2 rounded-full">
+            <Link href="/shipping-returns">Read full policy <ArrowRight className="h-4 w-4" /></Link>
+          </Button>
         </div>
       </div>
     </section>
@@ -510,229 +449,45 @@ function ShippingReturnsSection() {
 }
 
 /* ----------------------------------------------------------- */
-/* FAQ                                                         */
+/* Store visit CTA                                             */
 /* ----------------------------------------------------------- */
-function FaqSection() {
-  const faqs = [
-    {
-      q: "How long does shipping take?",
-      a: "Standard shipping is 2–5 business days within the lower 48 states. Orders placed before 1pm ET ship the same business day from Portland, Maine. Expedited options (1–2 day) are available at checkout.",
-    },
-    {
-      q: "What's your return policy?",
-      a: "60 days from delivery, no restocking fee on unused items in original packaging. For used items, reach out and we'll work something out — we'd rather you love what you keep. Lifetime guarantee on cast iron, tools, and watches covers manufacturing defects.",
-    },
-    {
-      q: "Do you offer a trade or wholesale discount?",
-      a: "Yes — designers, stylists, hospitality buyers, and retail stores qualify for a trade discount of 15–25% off, depending on volume. Apply through our contact form with your resale certificate or design portfolio.",
-    },
-    {
-      q: "Where are your products made?",
-      a: "Most are made in the United States, with a smaller share from Japan, Portugal, Lithuania, and the United Kingdom. Each product page lists the country of origin and the specific maker. We don't drop-ship from anonymous factories.",
-    },
-    {
-      q: "Can I visit your store in person?",
-      a: "Yes. Our Portland, Maine storefront is open Tuesday–Saturday, 10am–6pm ET, at 118 Harbor Lane. Many of the online catalog items are on display, and our team is happy to walk you through materials and care.",
-    },
-    {
-      q: "Do you ship internationally?",
-      a: "We ship to over 40 countries with calculated duties and taxes shown at checkout, so there are no surprise charges on delivery. International orders typically arrive in 7–14 business days.",
-    },
-  ];
+function StoreVisitCTA() {
   return (
-    <section id="faq" className="bg-secondary/40 py-14 lg:py-20" style={{ scrollMarginTop: "100px" }}>
+    <section className="bg-secondary/40 py-14 lg:py-20">
       <div className="container-wide">
-        <SectionHeading
-          eyebrow="Good to know"
-          title="Frequently asked questions"
-          description="If your question isn't here, email hello@hearthandharbor.com — a real person answers within one business day."
-        />
-        <div className="mx-auto mt-10 max-w-3xl divide-y divide-border rounded-2xl border border-border bg-card">
-          {faqs.map((f, i) => (
-            <details key={i} className="group p-6 [&_summary]:cursor-pointer">
-              <summary className="flex items-start justify-between gap-4 font-serif-display text-lg font-semibold text-foreground marker:content-none">
-                {f.q}
-                <span className="mt-1 grid h-6 w-6 shrink-0 place-items-center rounded-full border border-border text-primary transition-transform group-open:rotate-45">
-                  +
-                </span>
-              </summary>
-              <p className="mt-3 text-[14px] leading-relaxed text-muted-foreground">{f.a}</p>
-            </details>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ----------------------------------------------------------- */
-/* Contact                                                     */
-/* ----------------------------------------------------------- */
-function ContactSection() {
-  const { toast } = useToast();
-  const [submitting, setSubmitting] = React.useState(false);
-
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSubmitting(true);
-    window.setTimeout(() => {
-      setSubmitting(false);
-      toast({
-        title: "Message sent",
-        description: "We'll reply within one business day — usually much sooner.",
-      });
-      (e.target as HTMLFormElement).reset();
-    }, 900);
-  };
-
-  return (
-    <section id="contact" className="py-14 lg:py-20" style={{ scrollMarginTop: "100px" }}>
-      <div className="container-wide grid gap-12 lg:grid-cols-2 lg:gap-16">
-        {/* Left: info */}
-        <div>
-          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
-            Get in touch
-          </div>
-          <h2 className="font-serif-display text-3xl font-semibold leading-tight text-foreground sm:text-4xl lg:text-5xl text-balance">
-            We answer our own email.
-          </h2>
-          <p className="mt-4 max-w-md text-[15px] leading-relaxed text-foreground/80">
-            Questions about a product, an order, or a piece you&apos;re trying
-            to fix? Drop us a note — a real person in Portland reads every one
-            and usually replies within a business day.
-          </p>
-
-          <div className="mt-8 space-y-4">
-            <ContactRow
-              icon={MapPin}
-              title="Visit the store"
-              lines={["118 Harbor Lane", "Portland, ME 04101"]}
-              note="Open Tue–Sat, 10am–6pm ET"
-            />
-            <ContactRow
-              icon={Mail}
-              title="Email us"
-              lines={["hello@hearthandharbor.com", "trade@hearthandharbor.com"]}
-              note="Replies within 1 business day"
-            />
-            <ContactRow
-              icon={Phone}
-              title="Call the shop"
-              lines={["(207) 555-0142"]}
-              note="Tue–Sat, 10am–6pm ET"
-            />
-            <ContactRow
-              icon={Clock}
-              title="Customer service hours"
-              lines={["Mon–Fri: 9am–6pm ET", "Sat: 10am–5pm ET"]}
-              note="Closed Sundays & major holidays"
-            />
-          </div>
-        </div>
-
-        {/* Right: form */}
-        <div className="rounded-2xl border border-border bg-card p-6 product-card-shadow lg:p-8">
-          <h3 className="font-serif-display text-xl font-semibold text-foreground">
-            Send us a message
-          </h3>
-          <p className="mt-1 text-[13px] text-muted-foreground">
-            Required fields marked with *
-          </p>
-          <form onSubmit={onSubmit} className="mt-6 space-y-4">
-            <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="First name *" htmlFor="firstName">
-                <Input id="firstName" name="firstName" required placeholder="Mara" />
-              </Field>
-              <Field label="Last name *" htmlFor="lastName">
-                <Input id="lastName" name="lastName" required placeholder="Whitfield" />
-              </Field>
+        <div className="grid items-center gap-8 rounded-2xl bg-primary p-8 text-primary-foreground lg:grid-cols-2 lg:p-12">
+          <div>
+            <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em]">
+              <MapPin className="h-3 w-3" aria-hidden="true" />
+              Portland, Maine
             </div>
-            <Field label="Email address *" htmlFor="email">
-              <Input id="email" name="email" type="email" required placeholder="you@email.com" />
-            </Field>
-            <Field label="Subject" htmlFor="subject">
-              <Input id="subject" name="subject" placeholder="What's this about?" />
-            </Field>
-            <Field label="Order number (if applicable)" htmlFor="order">
-              <Input id="order" name="order" placeholder="HH-12345" />
-            </Field>
-            <Field label="Message *" htmlFor="message">
-              <Textarea
-                id="message"
-                name="message"
-                required
-                rows={5}
-                placeholder="Tell us what you need — the more detail, the better."
-              />
-            </Field>
-            <div className="flex items-center justify-between gap-4 pt-2">
-              <p className="text-[11px] text-muted-foreground">
-                We&apos;ll never share your email. See our privacy policy.
-              </p>
-              <Button
-                type="submit"
-                disabled={submitting}
-                className="gap-2 rounded-full"
-              >
-                {submitting ? "Sending…" : "Send message"}
-                {!submitting && <ArrowRight className="h-4 w-4" />}
+            <h2 className="font-serif-display text-3xl font-semibold leading-tight sm:text-4xl text-balance">
+              Visit the store, or send us a note.
+            </h2>
+            <p className="mt-4 max-w-md text-[15px] leading-relaxed text-primary-foreground/85">
+              118 Harbor Lane is open Tuesday–Saturday, 10am–6pm ET. Most of the online catalog is on display — and a real person answers every email within a business day.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Button asChild variant="secondary" className="gap-2 rounded-full bg-accent text-accent-foreground hover:bg-accent/90">
+                <Link href="/contact">Get in touch <ArrowRight className="h-4 w-4" /></Link>
+              </Button>
+              <Button asChild variant="outline" className="rounded-full border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+                <Link href="/faq">Read FAQ</Link>
               </Button>
             </div>
-          </form>
+          </div>
+          <div className="relative aspect-[16/10] overflow-hidden rounded-2xl">
+            <Image
+              src="https://images.unsplash.com/photo-1556742111-a301076d9d18?auto=format&fit=crop&w=1200&q=80"
+              alt="Hearth & Harbor storefront in Portland, Maine"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function ContactRow({
-  icon: Icon,
-  title,
-  lines,
-  note,
-}: {
-  icon: React.ComponentType<{ className?: string }>;
-  title: string;
-  lines: string[];
-  note: string;
-}) {
-  return (
-    <div className="flex gap-4">
-      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary/10 text-primary">
-        <Icon className="h-4 w-4" />
-      </div>
-      <div>
-        <div className="text-[13px] font-semibold uppercase tracking-wider text-foreground">
-          {title}
-        </div>
-        {lines.map((l) => (
-          <div key={l} className="text-[14px] text-foreground/85">
-            {l}
-          </div>
-        ))}
-        <div className="mt-0.5 text-[12px] text-muted-foreground">{note}</div>
-      </div>
-    </div>
-  );
-}
-
-function Field({
-  label,
-  htmlFor,
-  children,
-}: {
-  label: string;
-  htmlFor: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="space-y-1.5">
-      <Label htmlFor={htmlFor} className="text-[13px] font-medium text-foreground">
-        {label}
-      </Label>
-      {children}
-    </div>
   );
 }
 

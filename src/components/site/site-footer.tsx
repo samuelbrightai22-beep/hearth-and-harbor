@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import {
   Instagram,
   Facebook,
@@ -126,7 +125,9 @@ export function SiteFooter() {
             </div>
             <div className="flex items-center gap-2">
               <Mail className="h-4 w-4 shrink-0 text-accent" />
-              <span>hello@hearthandharbor.com</span>
+              <Link href="/contact" className="hover:text-accent transition-colors">
+                hello@hearthandharbor.com
+              </Link>
             </div>
           </div>
         </div>
@@ -138,13 +139,13 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-2.5 text-[13px] text-background/85">
             {categories.map((cat) => (
               <li key={cat.slug}>
-                <Link href={`#cat-${cat.slug}`} className="hover:text-accent transition-colors">
+                <Link href={`/shop/${cat.slug}`} className="hover:text-accent transition-colors">
                   {cat.name}
                 </Link>
               </li>
             ))}
             <li>
-              <Link href="#shop" className="hover:text-accent transition-colors">
+              <Link href="/shop" className="hover:text-accent transition-colors">
                 Shop all products
               </Link>
             </li>
@@ -156,12 +157,12 @@ export function SiteFooter() {
             Customer service
           </div>
           <ul className="mt-4 space-y-2.5 text-[13px] text-background/85">
-            <li><Link href="#shipping" className="hover:text-accent transition-colors">Shipping & returns</Link></li>
-            <li><Link href="#shipping" className="hover:text-accent transition-colors">Track your order</Link></li>
-            <li><Link href="#contact" className="hover:text-accent transition-colors">Contact us</Link></li>
-            <li><Link href="#faq" className="hover:text-accent transition-colors">FAQ</Link></li>
-            <li><Link href="#contact" className="hover:text-accent transition-colors">Trade program</Link></li>
-            <li><Link href="#contact" className="hover:text-accent transition-colors">Gift cards</Link></li>
+            <li><Link href="/shipping-returns" className="hover:text-accent transition-colors">Shipping & returns</Link></li>
+            <li><Link href="/shipping-returns" className="hover:text-accent transition-colors">Track your order</Link></li>
+            <li><Link href="/contact" className="hover:text-accent transition-colors">Contact us</Link></li>
+            <li><Link href="/faq" className="hover:text-accent transition-colors">FAQ</Link></li>
+            <li><Link href="/contact" className="hover:text-accent transition-colors">Trade program</Link></li>
+            <li><Link href="/contact" className="hover:text-accent transition-colors">Gift cards</Link></li>
           </ul>
         </div>
 
@@ -170,12 +171,12 @@ export function SiteFooter() {
             About
           </div>
           <ul className="mt-4 space-y-2.5 text-[13px] text-background/85">
-            <li><Link href="#about" className="hover:text-accent transition-colors">Our story</Link></li>
-            <li><Link href="#journal" className="hover:text-accent transition-colors">Journal</Link></li>
-            <li><Link href="#about" className="hover:text-accent transition-colors">Sustainability</Link></li>
-            <li><Link href="#about" className="hover:text-accent transition-colors">Makers & brands</Link></li>
-            <li><Link href="#contact" className="hover:text-accent transition-colors">Careers</Link></li>
-            <li><Link href="#contact" className="hover:text-accent transition-colors">Wholesale</Link></li>
+            <li><Link href="/about" className="hover:text-accent transition-colors">Our story</Link></li>
+            <li><Link href="/journal" className="hover:text-accent transition-colors">Journal</Link></li>
+            <li><Link href="/about" className="hover:text-accent transition-colors">Sustainability</Link></li>
+            <li><Link href="/about" className="hover:text-accent transition-colors">Makers & brands</Link></li>
+            <li><Link href="/contact" className="hover:text-accent transition-colors">Careers</Link></li>
+            <li><Link href="/contact" className="hover:text-accent transition-colors">Wholesale</Link></li>
           </ul>
         </div>
 
@@ -209,10 +210,10 @@ export function SiteFooter() {
         <div className="container-wide flex flex-col items-center justify-between gap-4 py-6 text-[12px] text-background/60 sm:flex-row">
           <div>© {new Date().getFullYear()} Hearth & Harbor LLC. All rights reserved.</div>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-            <Link href="#shipping" className="hover:text-accent">Privacy policy</Link>
-            <Link href="#shipping" className="hover:text-accent">Terms of service</Link>
-            <Link href="#shipping" className="hover:text-accent">Accessibility</Link>
-            <Link href="#shipping" className="hover:text-accent">Cookie settings</Link>
+            <Link href="/privacy" className="hover:text-accent">Privacy policy</Link>
+            <Link href="/terms" className="hover:text-accent">Terms of service</Link>
+            <Link href="/contact" className="hover:text-accent">Accessibility</Link>
+            <Link href="/contact" className="hover:text-accent">Cookie settings</Link>
           </div>
           <div className="flex items-center gap-1.5" aria-label="Accepted payment methods">
             {["VISA", "MC", "AMEX", "Pay", "GPay"].map((p) => (

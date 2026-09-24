@@ -2,11 +2,13 @@
 
 import * as React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Star, ShoppingCart, Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Product } from "@/lib/site-data";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { useCart } from "@/lib/cart-store";
 
 type ProductCardProps = {
   product: Product;
@@ -23,10 +25,20 @@ const badgeStyles: Record<NonNullable<Product["badge"]>, string> = {
 
 export function ProductCard({ product, className, index = 0 }: ProductCardProps) {
   const { toast } = useToast();
+  const add = useCart((s) => s.add);
   const [added, setAdded] = React.useState(false);
   const [liked, setLiked] = React.useState(false);
 
-  const handleAdd = () => {
+  const handleAdd = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    add({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      category: product.category,
+    });
     setAdded(true);
     toast({
       title: "Added to cart",
@@ -35,8 +47,15 @@ export function ProductCard({ product, className, index = 0 }: ProductCardProps)
     window.setTimeout(() => setAdded(false), 1800);
   };
 
+  const handleLike = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setLiked((v) => !v);
+  };
+
   return (
-    <article
+    <Link
+      href={`/product/${product.slug}`}
       className={cn(
         "group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card product-card-shadow transition-all duration-300 hover:-translate-y-1 hover:product-card-shadow-hover",
         className,
@@ -64,7 +83,7 @@ export function ProductCard({ product, className, index = 0 }: ProductCardProps)
         <button
           type="button"
           aria-label={liked ? "Remove from wishlist" : "Add to wishlist"}
-          onClick={() => setLiked((v) => !v)}
+          onClick={handleLike}
           className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white/90 backdrop-blur-sm transition-all hover:bg-white"
         >
           <Heart
@@ -129,6 +148,6 @@ export function ProductCard({ product, className, index = 0 }: ProductCardProps)
           </Button>
         </div>
       </div>
-    </article>
+    </Link>
   );
 }

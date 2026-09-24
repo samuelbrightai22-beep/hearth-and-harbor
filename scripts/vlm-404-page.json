@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "The page is rendering correctly and displays a \"404\" error message with the text \"This page wandered off.\" The layout includes a header with the \"Hearth & Harbor\" logo, navigation menu, and icons for search, account, and cart.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1790287988,
+  "id": "20260925061306e4bc54cb60c54da5",
+  "model": "glm-5v-turbo",
+  "object": "chat.completion",
+  "request_id": "20260925061306e4bc54cb60c54da5",
+  "usage": {
+    "completion_tokens": 52,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 922,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 974
+  }
+}

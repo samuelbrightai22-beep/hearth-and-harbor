@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "Yes, there is a success toast visible at the bottom-right of the page. Its content is:\n\n**Message sent**\nWe'll reply within one business day — usually much sooner.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1790287948,
+  "id": "20260925061227ff5a7df15c7c4c12",
+  "model": "glm-5v-turbo",
+  "object": "chat.completion",
+  "request_id": "20260925061227ff5a7df15c7c4c12",
+  "usage": {
+    "completion_tokens": 37,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 916,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 953
+  }
+}

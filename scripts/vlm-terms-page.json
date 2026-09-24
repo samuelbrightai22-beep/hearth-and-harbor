@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "The page is rendering correctly, displaying the \"Terms of Service\" for Hearth & Harbor with a visible header, navigation menu, and the start of the legal text. A small \"1 Issue\" notification is visible in the bottom left corner.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1790287986,
+  "id": "202609250613048a346cb3d6e444a1",
+  "model": "glm-5v-turbo",
+  "object": "chat.completion",
+  "request_id": "202609250613048a346cb3d6e444a1",
+  "usage": {
+    "completion_tokens": 49,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 922,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 971
+  }
+}

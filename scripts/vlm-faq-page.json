@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "The page is rendering correctly and displays the \"Frequently asked questions\" section for \"Hearth & Harbor,\" including a navigation bar, a breadcrumb trail, and a list of topics like \"Orders & Shipping.\"",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1790287980,
+  "id": "20260925061259365e6cd68660466e",
+  "model": "glm-5v-turbo",
+  "object": "chat.completion",
+  "request_id": "20260925061259365e6cd68660466e",
+  "usage": {
+    "completion_tokens": 43,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 922,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 965
+  }
+}

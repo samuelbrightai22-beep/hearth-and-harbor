@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "The page is rendering correctly, displaying the \"Hearth & Harbor\" website's \"Shipping, returns & guarantees\" page with a header, navigation menu, and visible content sections. The layout includes a breadcrumb trail, a main heading, descriptive text, and the beginnings of \"Shipping\" and \"Returns & exchanges\" sections at the bottom.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1790287983,
+  "id": "20260925061301bf6c6a0e2e0941e5",
+  "model": "glm-5v-turbo",
+  "object": "chat.completion",
+  "request_id": "20260925061301bf6c6a0e2e0941e5",
+  "usage": {
+    "completion_tokens": 69,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 922,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 991
+  }
+}

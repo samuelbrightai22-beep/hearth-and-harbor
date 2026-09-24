@@ -3,6 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import {
   Search,
   ShoppingCart,
@@ -22,10 +23,12 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import { navCategories, categories } from "@/lib/site-data";
+import { useCart } from "@/lib/cart-store";
 
 export function SiteHeader() {
-  const [cartCount] = React.useState(3);
+  const cartCount = useCart((s) => s.count());
   const [scrolled, setScrolled] = React.useState(false);
+  const pathname = usePathname();
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -33,6 +36,13 @@ export function SiteHeader() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const isActive = (href: string) => {
+    if (href === "/shop") {
+      return pathname === "/shop" || pathname?.startsWith("/shop/");
+    }
+    return pathname === href;
+  };
 
   return (
     <header
@@ -70,7 +80,7 @@ export function SiteHeader() {
             <nav className="mt-6 flex flex-col gap-1">
               <SheetClose asChild>
                 <Link
-                  href="#shop"
+                  href="/shop"
                   className="rounded-md px-3 py-2.5 text-sm font-semibold text-foreground hover:bg-muted"
                 >
                   Shop All
@@ -82,7 +92,7 @@ export function SiteHeader() {
               {categories.map((cat) => (
                 <SheetClose asChild key={cat.slug}>
                   <Link
-                    href={`#cat-${cat.slug}`}
+                    href={`/shop/${cat.slug}`}
                     className="rounded-md px-3 py-2 text-sm text-foreground/90 hover:bg-muted"
                   >
                     {cat.name}
@@ -92,7 +102,7 @@ export function SiteHeader() {
               <div className="mt-3 border-t border-border pt-2">
                 <SheetClose asChild>
                   <Link
-                    href="#about"
+                    href="/about"
                     className="rounded-md px-3 py-2.5 text-sm font-semibold text-foreground hover:bg-muted"
                   >
                     Our Story
@@ -100,7 +110,7 @@ export function SiteHeader() {
                 </SheetClose>
                 <SheetClose asChild>
                   <Link
-                    href="#journal"
+                    href="/journal"
                     className="rounded-md px-3 py-2.5 text-sm font-semibold text-foreground hover:bg-muted"
                   >
                     Journal
@@ -108,7 +118,7 @@ export function SiteHeader() {
                 </SheetClose>
                 <SheetClose asChild>
                   <Link
-                    href="#shipping"
+                    href="/shipping-returns"
                     className="rounded-md px-3 py-2.5 text-sm font-semibold text-foreground hover:bg-muted"
                   >
                     Shipping & Returns
@@ -116,7 +126,15 @@ export function SiteHeader() {
                 </SheetClose>
                 <SheetClose asChild>
                   <Link
-                    href="#contact"
+                    href="/faq"
+                    className="rounded-md px-3 py-2.5 text-sm font-semibold text-foreground hover:bg-muted"
+                  >
+                    FAQ
+                  </Link>
+                </SheetClose>
+                <SheetClose asChild>
+                  <Link
+                    href="/contact"
                     className="rounded-md px-3 py-2.5 text-sm font-semibold text-foreground hover:bg-muted"
                   >
                     Contact
@@ -128,7 +146,7 @@ export function SiteHeader() {
         </Sheet>
 
         {/* Logo */}
-        <Link href="#top" className="flex shrink-0 items-center" aria-label="Hearth & Harbor — home">
+        <Link href="/" className="flex shrink-0 items-center" aria-label="Hearth & Harbor — home">
           <img
             src="/logo.svg"
             alt="Hearth & Harbor — considered goods for the modern home"
@@ -142,8 +160,11 @@ export function SiteHeader() {
         <nav className="hidden flex-1 items-center justify-center gap-6 lg:flex" aria-label="Primary">
           <div className="group relative">
             <Link
-              href="#shop"
-              className="flex items-center gap-1 text-sm font-semibold text-foreground hover:text-primary transition-colors"
+              href="/shop"
+              className={cn(
+                "flex items-center gap-1 text-sm font-semibold transition-colors hover:text-primary",
+                isActive("/shop") ? "text-primary" : "text-foreground",
+              )}
             >
               Shop All
               <ChevronDown className="h-3.5 w-3.5 text-muted-foreground transition-transform group-hover:rotate-180" />
@@ -154,7 +175,7 @@ export function SiteHeader() {
                 {categories.map((cat) => (
                   <Link
                     key={cat.slug}
-                    href={`#cat-${cat.slug}`}
+                    href={`/shop/${cat.slug}`}
                     className="group/cat flex gap-3 rounded-lg p-2.5 hover:bg-muted"
                   >
                     <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-md">
@@ -181,7 +202,10 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-semibold text-foreground hover:text-primary transition-colors"
+              className={cn(
+                "text-sm font-semibold transition-colors hover:text-primary",
+                isActive(item.href) ? "text-primary" : "text-foreground",
+              )}
             >
               {item.label}
             </Link>
@@ -195,8 +219,11 @@ export function SiteHeader() {
             size="icon"
             aria-label="Search products"
             className="hidden sm:inline-flex"
+            asChild
           >
-            <Search className="h-5 w-5" />
+            <Link href="/shop">
+              <Search className="h-5 w-5" />
+            </Link>
           </Button>
           <Button
             variant="ghost"
@@ -211,14 +238,19 @@ export function SiteHeader() {
             size="icon"
             aria-label={`Cart with ${cartCount} items`}
             className="relative"
+            asChild
           >
-            <ShoppingCart className="h-5 w-5" />
-            <span
-              className="absolute -right-0.5 -top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-accent px-1 text-[10px] font-bold text-accent-foreground"
-              aria-hidden="true"
-            >
-              {cartCount}
-            </span>
+            <Link href="/cart">
+              <ShoppingCart className="h-5 w-5" />
+              {cartCount > 0 && (
+                <span
+                  className="absolute -right-0.5 -top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-accent px-1 text-[10px] font-bold text-accent-foreground"
+                  aria-hidden="true"
+                >
+                  {cartCount}
+                </span>
+              )}
+            </Link>
           </Button>
         </div>
       </div>
