@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   reactStrictMode: false,
+  // Disable the Next.js dev overlay (the circular "N" button in bottom-left).
+  // This removes the dev-only indicator from the page entirely.
+  devIndicators: false,
   images: {
     remotePatterns: [
       {
