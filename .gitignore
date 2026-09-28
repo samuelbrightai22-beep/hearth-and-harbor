@@ -56,3 +56,14 @@ prompt
 server.log
 # Skills directory
 /skills/
+
+# z.ai sandbox-only files (not part of the production site)
+/.zscripts/
+/Caddyfile
+/mini-services/
+/examples/
+/tests/
+/scripts/
+/download/
+/home-*.png
+/dev.pid
