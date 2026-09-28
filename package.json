@@ -7,9 +7,9 @@
     "build": "next build",
     "start": "next start -p 3000",
     "lint": "eslint .",
-    "build:cloudflare": "npx opennextjs-cloudflare && npx opennextjs-cloudflare build",
-    "deploy:cloudflare": "bun run build:cloudflare && npx wrangler deploy",
-    "preview:cloudflare": "bun run build:cloudflare && npx wrangler dev"
+    "build:cloudflare": "npx opennextjs-cloudflare build",
+    "deploy:cloudflare": "npx opennextjs-cloudflare build && npx opennextjs-cloudflare deploy",
+    "preview:cloudflare": "npx opennextjs-cloudflare build && npx opennextjs-cloudflare preview"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
